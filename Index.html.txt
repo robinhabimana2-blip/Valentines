@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine?</title>
+<style>
+  body {
+    background: #ffe6eb;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+  }
+  .box {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 400px;
+  }
+  h1 {
+    color: #ff4d6d;
+  }
+  button {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  #yes {
+    background: #ff4d6d;
+    color: white;
+    transition: all 0.2s ease;
+  }
+  #no {
+    background: #fff;
+    color: #ff4d6d;
+    border: 2px solid #ff4d6d;
+    transition: all 0.2s ease;
+  }
+  #message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ff4d6d;
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <h1>Hi Sophie ❤️</h1>
+    <p>Can you be my Valentine? 💘</p>
+    <button id="yes" onclick="yesClick()">Yes 💖</button>
+    <button id="no" onmouseenter="noClick()">No 😅</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    let yesButton = document.getElementById('yes');
+    let noButton = document.getElementById('no');
+
+    function yesClick() {
+      document.getElementById('message').innerHTML =
+        "Yay!! 💕 Happy Valentine’s Day ❤️ — Robin";
+    }
+
+    function noClick() {
+      // Increase Yes button size
+      let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+      yesButton.style.fontSize = (currentSize + 5) + 'px';
+
+      // Move No button randomly
+      let maxX = window.innerWidth - noButton.offsetWidth;
+      let maxY = window.innerHeight - noButton.offsetHeight;
+      let randomX = Math.floor(Math.random() * maxX);
+      let randomY = Math.floor(Math.random() * maxY);
+      noButton.style.position = 'absolute';
+      noButton.style.left = randomX + 'px';
+      noButton.style.top = randomY + 'px';
+    }
+  </script>
+</body>
+</html>
